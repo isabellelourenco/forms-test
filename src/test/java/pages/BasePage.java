@@ -1,5 +1,6 @@
 package pages;
 
+import org.junit.After;
 import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
@@ -20,8 +21,15 @@ public class BasePage {
     }
     //aqui eu devo fazer uma função que retorne a resposta do assert
 
+    @After
 
-    public void Screenshot(){
-        Screenshot.take(driver,"report" + Generator.DateHourFile() + test.getMethodName() + ".png");
+    public void screenshot(){
+
+        Screenshot.take(driver,"src/main/resources/report" + Generator.DateHourFile() + test.getMethodName() + ".png");
+    }
+
+    public void tearDown(){
+        //driver.quit();
+
     }
 }

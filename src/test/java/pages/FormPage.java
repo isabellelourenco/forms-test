@@ -13,9 +13,15 @@ public class FormPage extends BasePage{
         super(driver);
     }
 
+    public FormPage selectPortugueseLanguage() throws InterruptedException {
+        driver.findElement(By.className("dropdown-toggle")).click();
+        driver.findElement(By.className("lfr-icon-item")).click();
+        Thread.sleep(1000);
+        return this;
+    }
+
     public FormPage enterName(String name) throws InterruptedException {
-        WebElement inputName = driver.findElement(By.xpath("//label[text()=\"What is your " +
-                "name?\"]/following-sibling::input"));
+        WebElement inputName = driver.findElement(By.cssSelector("input[class='ddm-field-text form-control']"));
         inputName.sendKeys(name);
 
         Thread.sleep(1000);
@@ -37,8 +43,7 @@ public class FormPage extends BasePage{
     }
 
     public FormPage enterTextArea(String text) throws InterruptedException {
-        WebElement inputText = driver.findElement(By.xpath("//label[text()=\"Why did you join the testing " +
-                "area?\"]/following-sibling::textarea"));
+        WebElement inputText = driver.findElement(By.cssSelector("textarea[class='ddm-field-text form-control']"));
         inputText.sendKeys(text);
 
         Thread.sleep(1000);
@@ -46,13 +51,30 @@ public class FormPage extends BasePage{
         return this;
     }
 
-    public SuccessPage clickSubmit() throws InterruptedException {
+    public SuccessPage clickSubmitSucess() throws InterruptedException {
         driver.findElement(By.className("lfr-ddm-form-submit")).click();
 
         WebDriverWait wait = new WebDriverWait(driver,10);
         wait.until(ExpectedConditions.titleContains("Form - Forms"));
 
         return new SuccessPage(driver);
+
+    }
+
+    public FormPage clickSubmitFailed(){
+        driver.findElement(By.className("lfr-ddm-form-submit")).click();
+        return this;
+    }
+
+    public String catchFieldRequiredMessage(){
+
+        WebDriverWait wait = new WebDriverWait(driver,10);
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy((By.className("form-feedback-group"))));
+
+        //WebElement fieldRequired = driver.findElement(By.cssSelector(".form-feedback-group > .form-feedback-item > " +
+                //".help-block"));
+
+        return driver.findElement(By.className("form-feedback-group")).getText();
     }
 
 
