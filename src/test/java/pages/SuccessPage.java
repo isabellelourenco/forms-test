@@ -9,7 +9,6 @@ public class SuccessPage extends BasePage {
     }
 
     public String catchSuccessMessage(){
-
         return driver.findElement(By.className("ddm-form-description")).getText();
     }
 }

@@ -44,7 +44,7 @@ public class FormTest {
                 .enterName("Isabelle Lourenço")
                 .enterDateBirth("")
                 .enterTextArea("I choose Software Testing as a carrer because i love facing challenges, and in this " +
-                        "area, we dealing with challenges and puzzles all day.")
+                        "area, we dealing with challenges all day.")
                 .clickSubmitFailed()
                 .catchFieldRequiredMessage();
         assertEquals("This field is required.",fieldRequiredMessage);
@@ -58,14 +58,32 @@ public class FormTest {
                 .selectPortugueseLanguage()
                 .enterName("Isabelle Lourenço") //configurar arquivo csv depois
                 .enterDateBirth("20/02/1990")
-                .enterTextArea("I choose Software Testing as a carrer because i love facing challenges, and in this " +
-                        "area, we dealing with challenges and puzzles all day.")
+                .enterTextArea("Escolhi o Teste de Software como carreira porque adoro lidar com desafios e nesta " +
+                        "área, lidamos com desafios o dia todo.")
                 .clickSubmitSucess()
                 .catchSuccessMessage();
         assertEquals("Informações enviadas com sucesso!",successMessage);
 
 
     }
+
+    @Test
+    public void failedSubmitFormPortugueseTest() throws InterruptedException {
+        String fieldRequiredMessage = new FormPage(driver)
+                .selectPortugueseLanguage()
+                .enterName("Isabelle Lourenço")
+                .enterDateBirth("")
+                .enterTextArea("Escolhi o Teste de Software como carreira porque adoro lidar com desafios e nesta área, lidamos com desafios o dia todo.")
+                .clickSubmitFailed()
+                .catchFieldRequiredMessage();
+        assertEquals("Este campo é obrigatório.",fieldRequiredMessage);
+
+
+    }
+
+
+
+
 
 
 

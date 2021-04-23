@@ -16,7 +16,9 @@ public class FormPage extends BasePage{
     public FormPage selectPortugueseLanguage() throws InterruptedException {
         driver.findElement(By.className("dropdown-toggle")).click();
         driver.findElement(By.className("lfr-icon-item")).click();
+
         Thread.sleep(1000);
+
         return this;
     }
 
@@ -67,16 +69,10 @@ public class FormPage extends BasePage{
     }
 
     public String catchFieldRequiredMessage(){
-
         WebDriverWait wait = new WebDriverWait(driver,10);
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy((By.className("form-feedback-group"))));
 
-        //WebElement fieldRequired = driver.findElement(By.cssSelector(".form-feedback-group > .form-feedback-item > " +
-                //".help-block"));
-
         return driver.findElement(By.className("form-feedback-group")).getText();
     }
-
-
 
 }
