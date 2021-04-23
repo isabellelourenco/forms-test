@@ -19,27 +19,29 @@ public class FormPage extends BasePage{
 
         Thread.sleep(1000);
 
+
         return this;
     }
 
     public FormPage enterName(String name) throws InterruptedException {
-        WebElement inputName = driver.findElement(By.cssSelector("input[class='ddm-field-text form-control']"));
+        WebElement inputName = driver.findElement(By.cssSelector("input[class='form-control ddm-field-text']"));
         inputName.sendKeys(name);
 
         Thread.sleep(1000);
 
-        inputName.sendKeys(Keys.chord(Keys.TAB));
+        inputName.sendKeys(Keys.TAB);
 
         return this;
     }
 
     public FormPage enterDateBirth(String date) throws InterruptedException {
+
         WebElement inputDate = driver.findElement(By.className("input-group-inset-after"));
+        inputDate.sendKeys(Keys.CONTROL,"a");
+        inputDate.sendKeys(Keys.DELETE);
         inputDate.sendKeys(date);
 
         Thread.sleep(1000);
-
-        inputDate.sendKeys(Keys.chord(Keys.TAB));
 
         return this;
     }
@@ -74,5 +76,7 @@ public class FormPage extends BasePage{
 
         return driver.findElement(By.className("form-feedback-group")).getText();
     }
+
+
 
 }

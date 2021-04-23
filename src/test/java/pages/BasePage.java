@@ -13,23 +13,8 @@ public class BasePage {
 
     protected WebDriver driver;
 
-    @Rule
-    public TestName test = new TestName();
-
     public BasePage(WebDriver driver){
         this.driver = driver;
     }
-    //aqui eu devo fazer uma função que retorne a resposta do assert
 
-    @After
-
-    public void screenshot(){
-
-        Screenshot.take(driver,"src/main/resources/report" + Generator.DateHourFile() + test.getMethodName() + ".png");
-    }
-
-    public void tearDown(){
-        driver.quit();
-
-    }
 }

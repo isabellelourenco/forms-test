@@ -1,25 +1,29 @@
 package tests;
 
 import org.easetech.easytest.runner.DataDrivenTestRunner;
-import org.junit.After;
-import org.junit.Assert;
+import org.junit.*;
+
 import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.rules.TestName;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import pages.FormPage;
 import suport.Screenshot;
 import suport.Web;
+import suport.Generator;
 
 @RunWith(DataDrivenTestRunner.class)
 
-public class FormTest {
+public class FormTest{
 
     private WebDriver driver;
 
-    @Before
+    @Rule
+    public TestName test = new TestName();
 
+
+    @Before
     public void setUp(){
         driver = Web.createChrome();
     }
@@ -29,11 +33,10 @@ public class FormTest {
         String successMessage = new FormPage(driver)
                 .enterName("Isabelle Lourenço")
                 .enterDateBirth("20/02/1990")
-                .enterTextArea("I choose Software Testing as a carrer because i love facing challenges, and in this " +
-                        "area, we dealing with challenges and puzzles all day.")
+                .enterTextArea("I choose Software Testing as a carrer because i love dealing with challenges, and in this area, we dealing with challenges and puzzles all day.")
                 .clickSubmitSucess()
                 .catchSuccessMessage();
-        assertEquals("Information sent successfully!",successMessage);
+        assertEquals("Success:Your request completed successfully.",successMessage);
 
 
     }
@@ -81,10 +84,18 @@ public class FormTest {
 
     }
 
+    @After
+    public void after(){
+        screenshot();
+        tearDown();
+    }
+    
+    public void screenshot(){
+        Screenshot.take(driver,"src\\main\\resources\\report\\" + Generator.DateHourFile() + test.getMethodName() +
+                ".png");
+    }
 
-
-
-
-
-
+    public void tearDown(){
+        driver.quit();
+    }
 }
