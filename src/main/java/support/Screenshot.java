@@ -1,4 +1,4 @@
-package suport;
+package support;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;

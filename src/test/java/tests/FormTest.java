@@ -9,9 +9,9 @@ import org.junit.rules.TestName;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import pages.FormPage;
-import suport.Screenshot;
-import suport.Web;
-import suport.Generator;
+import support.Screenshot;
+import support.Web;
+import support.Generator;
 
 @RunWith(DataDrivenTestRunner.class)
 

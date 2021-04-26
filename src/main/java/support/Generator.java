@@ -1,8 +1,7 @@
-package suport;
+package support;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Random;
 
 public class Generator {
     public static String DateHourFile(){
