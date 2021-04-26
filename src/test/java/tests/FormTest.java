@@ -32,7 +32,7 @@ public class FormTest{
     public void successSubmitFormEnglishTest() throws InterruptedException {
         String successMessage = new FormPage(driver)
                 .enterName("Isabelle Lourenço")
-                .enterDateBirth("20/02/1990")
+                .enterDateBirth("02/20/1990")
                 .enterTextArea("I choose Software Testing as a carrer because i love dealing with challenges, and in this area, we dealing with challenges and puzzles all day.")
                 .clickSubmitSucess()
                 .catchSuccessMessage();
@@ -60,7 +60,7 @@ public class FormTest{
         String successMessage = new FormPage(driver)
                 .selectPortugueseLanguage()
                 .enterName("Isabelle Lourenço") //configurar arquivo csv depois
-                .enterDateBirth("20/02/1990")
+                .enterDateBirth("02/20/1990")
                 .enterTextArea("Escolhi o Teste de Software como carreira porque adoro lidar com desafios e nesta " +
                         "área, lidamos com desafios o dia todo.")
                 .clickSubmitSucess()
